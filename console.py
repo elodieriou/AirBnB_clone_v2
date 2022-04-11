@@ -137,13 +137,12 @@ class HBNBCommand(cmd.Cmd):
                     except Exception:
                         continue
                     setattr(new_instance, param[0], param[1])
-            storage.save()
+            new_instance.save()
             print(new_instance.id)
         else:
             new_instance = HBNBCommand.classes[args]()
-            storage.save()
+            new_instance.save()
             print(new_instance.id)
-            storage.save()
 
     def help_create(self):
         """ Help information for the create method """

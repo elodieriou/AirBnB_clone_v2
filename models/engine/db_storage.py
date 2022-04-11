@@ -32,14 +32,16 @@ class DBStorage():
     def all(self, cls=None):
         """"""
         my_dict = {}
+        my_list = []
         if cls is None:
-            for obj in self.__session.query(City, State).all():
-                key = "{}.{}".format(type(obj).__name__, obj.id)
-                my_dict[key] = obj
+            my_list += self.__session.query(State).all()
+            my_list += self.__session.query(City).all()
         else:
-            for obj in self.__session.query(cls).all():
-                key = "{}.{}".format(type(obj).__name__, obj.id)
-                my_dict[key] = obj
+            my_list = self.__session.query(cls).all()
+
+        for obj in my_list:
+            key = "{}.{}".format(type(obj).__name__, obj.id)
+            my_dict[key] = obj
         return my_dict
 
     def new(self, obj):
