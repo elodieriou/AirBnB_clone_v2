@@ -36,6 +36,7 @@ class DBStorage():
         if cls is None:
             my_list += self.__session.query(State).all()
             my_list += self.__session.query(City).all()
+            my_list += self.__session.query(User).all()
         else:
             my_list = self.__session.query(cls).all()
 
@@ -63,3 +64,4 @@ class DBStorage():
         session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
+
