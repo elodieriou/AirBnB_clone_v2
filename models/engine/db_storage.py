@@ -33,7 +33,7 @@ class DBStorage():
         """"""
         my_dict = {}
         if cls is None:
-            for obj in self.__session.query(User, State, City, Amenity, Place, Review).all():
+            for obj in self.__session.query(City, State).all():
                 key = "{}.{}".format(type(obj).__name__, obj.id)
                 my_dict[key] = obj
         else:
