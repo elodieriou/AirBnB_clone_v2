@@ -38,6 +38,7 @@ class DBStorage():
             my_list += self.__session.query(City).all()
             my_list += self.__session.query(User).all()
             my_list += self.__session.query(Place).all()
+            my_list += self.__session.query(Review).all()
         else:
             my_list = self.__session.query(cls).all()
 
