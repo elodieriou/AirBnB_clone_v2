@@ -25,6 +25,8 @@ class BaseModel:
         """
         mod = '%Y-%m-%dT%H:%M:%S.%f'
         if len(args) == 0 and len(kwargs) != 0:
+            if self.id not in kwargs:
+                self.id = str(uuid.uuid4())
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key == 'created_at' or key == 'updated_at':
