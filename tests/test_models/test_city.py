@@ -16,9 +16,9 @@ class test_City(test_basemodel):
     def test_state_id(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.state_id), str)
+        self.assertTrue(hasattr(new, "state_id"))
 
     def test_name(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.name), str)
+        self.assertTrue(hasattr(new, "name"))

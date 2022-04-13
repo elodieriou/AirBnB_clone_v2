@@ -16,54 +16,54 @@ class test_Place(test_basemodel):
     def test_city_id(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.city_id), str)
+        self.assertTrue(hasattr(new, "city_id"))
 
     def test_user_id(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.user_id), str)
+        self.assertTrue(hasattr(new, "user_id"))
 
     def test_name(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.name), str)
+        self.assertTrue(hasattr(new, "name"))
 
     def test_description(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.description), str)
+        self.assertTrue(hasattr(new, "description"))
 
     def test_number_rooms(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.number_rooms), int)
+        self.assertTrue(hasattr(new, "name"))
 
     def test_number_bathrooms(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.number_bathrooms), int)
+        self.assertTrue(hasattr(new, "number_bathrooms"))
 
     def test_max_guest(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.max_guest), int)
+        self.assertTrue(hasattr(new, "max_guest"))
 
     def test_price_by_night(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.price_by_night), int)
+        self.assertTrue(hasattr(new, "price_by_night"))
 
     def test_latitude(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.latitude), float)
+        self.assertTrue(hasattr(new, "latitude"))
 
     def test_longitude(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.latitude), float)
+        self.assertTrue(hasattr(new, "longitude"))
 
     def test_amenity_ids(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.amenity_ids), list)
+        self.assertTrue(hasattr(new, "amenity_ids"))
