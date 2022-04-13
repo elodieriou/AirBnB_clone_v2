@@ -60,4 +60,4 @@ class FileStorage:
             return
         else:
             obj_key = "{}.{}".format(type(obj).__name__, obj.id)
-            del(FileStorage.__objects[obj_key])
+            del(self.__objects[obj_key])
