@@ -16,6 +16,24 @@ class TestDBStorage(unittest.TestCase):
         self.assertEqual(result.total_errors, 1,
                          "Found code style errors (and warnings).")
 
+    def test_init_method(self):
+        pass
+
+    def test_all_method(self):
+        pass
+
+    def test_new_method(self):
+        pass
+
+    def test_save_method(self):
+        pass
+
+    def test_delete_method(self):
+        pass
+
+    def test_reload_method(self):
+        pass
+
 
 if __name__ == "__main__":
     unittest.main()
