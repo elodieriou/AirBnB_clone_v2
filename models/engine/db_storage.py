@@ -14,12 +14,13 @@ from os import getenv
 
 
 class DBStorage:
-    """"""
+    """The class defines all method to manage the database storage"""
     __engine = None
     __session = None
 
     def __init__(self):
-        """"""
+        """Constructor method: creation of the engine. All the tables
+        are deleted if the environment variable is equal to test """
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
                                       .format(getenv('HBNB_MYSQL_USER'),
                                               getenv('HBNB_MYSQL_PWD'),
@@ -30,7 +31,7 @@ class DBStorage:
         Base.metadata.drop_all(bind=self.__engine)
 
     def all(self, cls=None):
-        """"""
+        """All method: display all information about a specific class"""
         my_dict = {}
         my_list = []
         if cls is None:
@@ -49,20 +50,20 @@ class DBStorage:
         return my_dict
 
     def new(self, obj):
-        """"""
+        """New method: add the object to the session"""
         self.__session.add(obj)
 
     def save(self):
-        """"""
+        """Save method: commit all changes to the session"""
         self.__session.commit()
 
     def delete(self, obj=None):
-        """"""
+        """Delete method: delete an object from the session"""
         if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
-        """"""
+        """Reload method: create all the table and the session"""
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
