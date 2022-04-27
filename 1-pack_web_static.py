@@ -2,7 +2,7 @@
 """This module defines how to compress before sending"""
 from fabric.api import local
 from os import path
-from time import strftime
+from time import strftime as time
 
 
 def do_pack():
