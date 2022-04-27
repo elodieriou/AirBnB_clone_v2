@@ -11,7 +11,6 @@ def do_pack():
 
     if path.exists("versions/") is False:
         local("mkdir versions/")
-    else:
-        local("tar -cvzf versions/web_static_{}{}{}{}3357.tgz web_static"
-              .format(strftime("%Y"), strftime("%m"), strftime("%d"),
-                      strftime("%H"), strftime("%M"), strftime("%S")))
+    local("tar -cvzf versions/web_static_{}{}{}{}{}{}.tgz web_static"
+          .format(strftime("%Y"), strftime("%m"), strftime("%d"),
+                  strftime("%H"), strftime("%M"), strftime("%S")))
