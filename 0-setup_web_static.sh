@@ -17,7 +17,7 @@ echo "Deploy web static !" > /data/web_static/releases/test/index.html
 # Create a symbolic link
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-# Give ownership of the /data/ folder to the ubuntu user and group
+# Give ownership of the /data/ folder to the ubuntu user and group recursively
 sudo chown -R ubuntu:ubuntu /data/
 sudo chgrp -R ubuntu:ubuntu /data/
 
