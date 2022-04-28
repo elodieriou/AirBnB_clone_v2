@@ -3,8 +3,8 @@
 
 # Install Nginx if not already exist
 if [ ! -x /usr/sbin/nginx ]; then
-  apt-get update
-  apt-get -y install nginx
+  sudo apt-get update
+  sudo apt-get -y install nginx
 fi
 
 # Create folders if not already exist
@@ -18,11 +18,11 @@ echo "Deploy web static !" > /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 # Give ownership of the /data/ folder to the ubuntu user and group
-chown -R ubuntu:ubuntu /data/
-chgrp -R ubuntu:ubuntu /data/
+sudo chown -R ubuntu:ubuntu /data/
+sudo chgrp -R ubuntu:ubuntu /data/
 
 # Update Nginx configuration
-sed -i '/server_name _;/a \\n\t location /hbnb_static { \n\t\t alias /data/web_static/current/; }' /etc/nginx/sites-available/default
+sed -i '48i\\t location /hbnb_static { \n\t\t alias /data/web_static/current/; }' /etc/nginx/sites-available/default
 
 # Restart Nginx
 service nginx start
