@@ -8,12 +8,7 @@ if [ ! -x /usr/sbin/nginx ]; then
 fi
 
 # Create folders if not already exist
-if [ ! -d /data/web_static/releases/test/ ]; then
-  sudo mkdir -p /data/web_static/releases/test/
-fi
-if [ ! -d /data/web_static/shared/ ]; then
-  sudo mkdir -p /data/web_static/shared/
-fi
+sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
 
 # Create a fake html file to test Nginx configuration
 echo "Deploy web static !" > /data/web_static/releases/test/index.html
@@ -28,4 +23,4 @@ sudo chown -R ubuntu:ubuntu /data/
 sed -i '/server_name _;/a \\n\t location /hbnb_static { \n\t\t alias /data/web_static/current/; }' /etc/nginx/sites-available/default
 
 # Restart Nginx
-sudo service nginx restart
+sudo service nginx start
