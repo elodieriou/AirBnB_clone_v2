@@ -87,7 +87,8 @@ def do_clean(number=0):
         old_version = list_directory.split("\n")
         to_delete = old_version[num:]
 
-        for remove_remote in to_delete.copy():
+        copy_list = to_delete.copy()
+        for remove_remote in copy_list:
             if remove_remote == "test":
-                continue
+                copy_list.pop(remove_remote)
             run("rm -rf {}".format(remove_remote))
