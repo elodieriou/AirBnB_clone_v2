@@ -79,8 +79,8 @@ def do_clean(number=0):
         old_version = list_file.split("\n")
         to_delete = old_version[num:]
 
-        for remove_local in to_delete:
-            local("rm {}".format(remove_local))
+        for file in to_delete:
+            local("rm {}".format(file))
 
     with cd("/data/web_static/releases/"):
         list_directory = run("ls -1t")
@@ -88,7 +88,7 @@ def do_clean(number=0):
         to_delete = old_version[num:]
 
         copy_list = to_delete.copy()
-        for remove_remote in copy_list:
-            if remove_remote == "test":
-                copy_list.pop(remove_remote)
-            run("rm -rf {}".format(remove_remote))
+        for directory in copy_list:
+            if directory == "test":
+                copy_list.pop(directory)
+            run("rm -rf {}".format(directory))
