@@ -10,25 +10,34 @@ package { 'nginx':
   require => Exec['update'],
 }
 
-exec { 'mkdir':
-  command => 'mkdir -p /data/web_static/releases/test/ /data/web_static/shared/',
-  path    => '/usr/bin',
+file { '/data':
+  ensure => 'directory',
+}
+
+file { '/data/web_static':
+  ensure => 'directory',
+}
+
+file { '/date/web_static/releases':
+  ensure => 'directory',
+}
+
+file { '/data/web_static/releases/test':
+  ensure => 'directory',
 }
 
 file { '/data/web_static/releases/test/index.html':
-  ensure => 'present',
-  path   => '/data/web_static/releases/test/index.html',
+  ensure  => 'present',
+  content => 'Deploy web static',
 }
 
-file_line { 'deployWebStatic':
-  message => 'Deploy web static !',
-  path    => '/data/web_static/releases/test/index.html',
-  line    => 'Deploy web static',
+file { '/data/web_static/shared':
+  ensure => 'directory',
 }
 
-file { '/data/web_static/releases/test/':
+file { '/data/web_static/current':
   ensure => 'link',
-  target => '/data/web_static/current',
+  target => '/data/web_static/releases/test/',
 }
 
 exec { 'change_owner_and_group':
