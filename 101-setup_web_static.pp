@@ -10,44 +10,39 @@ package { 'nginx':
   require => Exec['update'],
 }
 
-file { '/data':
-  ensure => 'directory',
+exec { 'create directory':
+  command => 'mkdir -p /data/web_static/releases/test /data/web_static/shared',
+  path    => '/usr/bin',
+  require => Package['nginx'],
 }
 
-file { '/data/web_static':
-  ensure => 'directory',
-}
-
-file { '/date/web_static/releases':
-  ensure => 'directory',
-}
-
-file { '/data/web_static/releases/test':
-  ensure => 'directory',
-}
-
-file { '/data/web_static/releases/test/index.html':
+file { 'create fake html':
   ensure  => 'present',
-  content => 'Deploy web static',
+  path    => '/data/web_static/releases/test/index.html',
+  content => 'Deploy web static !',
+  require => Exec['create directory'],
 }
 
-file { '/data/web_static/shared':
-  ensure => 'directory',
+file { 'create symbolic link':
+  ensure  => 'link',
+  path    => '/data/web_static/current',
+  force   => true,
+  target  => '/data/web_static/releases/test',
+  require => File['create fake html'],
 }
 
-file { '/data/web_static/current':
-  ensure => 'link',
-  target => '/data/web_static/releases/test/',
-}
-
-exec { 'change_owner_and_group':
-  command => 'chown -R ubuntu:ubuntu /data/',
+exec { 'give ownerships':
+  command => 'chown -R ubuntu:ubuntu /data',
   path    => '/usr/bin',
+  require => File['create symbolic link']
 }
 
-exec { 'modify_file':
-  command => 'sed -i '48i\\t location /hbnb_static { \n\t\t alias /data/web_static/current/; }' /etc/nginx/sites-available/default',
-  path    => '/usr/bin',
+file_line { 'add alias':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'server_name _;',
+  line   => 'location /hbnb_static { alias /data/web_static/current/; }' /etc/nginx/sites-available/default',
+  require => Exec['create symbolic link'],
 }
 
 service { 'nginx':
