@@ -10,14 +10,14 @@ exec { 'update':
   require => Exec['update'],
 }
 -> exec {'create_directory':
-  command => '/usr/bin mkdir -p /data/web_static/releases/test/ /data/web_static/shared/',
+  command => '/usr/bin/env mkdir -p /data/web_static/releases/test/ /data/web_static/shared/',
 }
 -> file { 'Hello World':
   ensure => 'present',
   path => '/data/web_static/releases/test/index.html',
   content => 'Hello World\n',
 }
--> exec {'f':
+-> exec {'create_symbolic_link':
   command => '/usr/bin/env ln -sf /data/web_static/releases/test /data/web_static/current',
 }
 -> exec {'h':
