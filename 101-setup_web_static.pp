@@ -1,4 +1,6 @@
 # Puppet for setup
+include stdlib
+
 exec { 'update':
   command => 'sudo apt-get update',
   path    => '/usr/bin',
