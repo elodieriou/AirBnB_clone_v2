@@ -9,7 +9,7 @@ exec { 'update':
   name    => 'nginx',
   require => Exec['update'],
 }
--> exec {'c':
+-> exec {'create_directory':
   command => '/usr/bin/env mkdir -p /data/web_static/releases/test/',
 }
 -> exec {'d':
