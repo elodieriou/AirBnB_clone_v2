@@ -1,11 +1,13 @@
 
 # puppet manifest preparing a server for static content deployment
-exec { 'apt-get-update':
+exec { 'update':
   command => 'apt-get -y update',
   path    => '/usr/bin',
 }
--> exec {'b':
-  command => 'apt-get -y install nginx',
+-> package { 'nginx':
+  ensure  => present,
+  name    => 'nginx',
+  require => Exec['update'],
 }
 -> exec {'c':
   command => '/usr/bin/env mkdir -p /data/web_static/releases/test/',
