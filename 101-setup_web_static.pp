@@ -12,8 +12,10 @@ exec { 'update':
 -> exec {'create_directory':
   command => '/usr/bin/env mkdir -p /data/web_static/releases/test/ /data/web_static/shared/',
 }
--> exec {'e':
-  command => '/usr/bin/env echo "Puppet x Holberton School" > /data/web_static/releases/test/index.html',
+-> file { 'Hello World':
+  ensure => 'present',
+  path => '/data/web_static/releases/test/index.html',
+  content => 'Hello World\n',
 }
 -> exec {'f':
   command => '/usr/bin/env ln -sf /data/web_static/releases/test /data/web_static/current',
