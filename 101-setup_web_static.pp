@@ -20,7 +20,7 @@ exec { 'update':
   command => '/usr/bin/env ln -sf /data/web_static/releases/test /data/web_static/current',
 }
 -> exec {'update_configuration':
-  command => '/usr/bin/env sed -i "/listen 80 default_server/a location /hbnb_static/ { alias /data/web_static/current/;}" /etc/nginx/sites-available/default',
+  command => '/usr/bin/env sed -i "48i location /hbnb_static/ { alias /data/web_static/current/;}" /etc/nginx/sites-available/default',
 }
 -> service { 'nginx':
   ensure  => 'running',
