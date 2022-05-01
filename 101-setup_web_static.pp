@@ -27,6 +27,6 @@ exec { 'update':
   ensure  => 'running',
   require => Package['nginx'],
 }
--> exec {'g':
+-> exec {'give_ownerships':
   command => '/usr/bin/env chown -R ubuntu:ubuntu /data',
 }
