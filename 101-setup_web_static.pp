@@ -10,8 +10,7 @@ exec { 'update':
   require => Exec['update'],
 }
 -> exec {'create_directory':
-  command => 'mkdir -p /data/web_static/releases/test/ /data/web_static/shared/',
-  path    => '/usr/bin',
+  command => '/usr/bin/env mkdir -p /data/web_static/releases/test/ /data/web_static/shared/',
 }
 -> exec {'e':
   command => '/usr/bin/env echo "Puppet x Holberton School" > /data/web_static/releases/test/index.html',
