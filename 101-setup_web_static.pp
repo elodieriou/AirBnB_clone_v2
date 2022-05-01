@@ -20,11 +20,8 @@ exec { 'update':
 -> exec {'create_symbolic_link':
   command => '/usr/bin/env ln -sf /data/web_static/releases/test /data/web_static/current',
 }
--> file_line { 'add_alias':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'server_name _;',
-  line   => 'location /hbnb_static/ { alias /data/web_static/current/;}" /etc/nginx/sites-available/default',
+-> exec {'update_configuration':
+  command => '/usr/bin/env sed -i "/server_name _;/a location /hbnb_static/ { alias /data/web_static/current/;}" /etc/nginx/sites-available/default',
 }
 -> exec {'i':
   command => '/usr/bin/env service nginx restart',
