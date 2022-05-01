@@ -1,5 +1,4 @@
-
-# puppet manifest preparing a server for static content deployment
+# Puppet for setup web static
 exec { 'update':
   command => 'apt-get -y update',
   path    => '/usr/bin',
