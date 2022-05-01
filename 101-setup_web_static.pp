@@ -1,3 +1,4 @@
+# Puppet for setup
 exec { 'apt-get-update':
   command => 'apt-get -y update',
   path    => '/usr/bin',
