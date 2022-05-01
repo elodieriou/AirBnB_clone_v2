@@ -4,8 +4,9 @@ exec { 'apt-get-update':
   command => 'apt-get -y update',
   path    => '/usr/bin',
 }
--> exec {'b':
-  command => '/usr/bin/env apt-get -y install nginx',
+-> exec {'apt-get -y install nginx':
+  command => 'apt-get -y install nginx',
+  path    => '/usr/bin',
 }
 -> exec {'c':
   command => '/usr/bin/env mkdir -p /data/web_static/releases/test/',
