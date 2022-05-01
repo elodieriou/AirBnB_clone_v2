@@ -10,7 +10,7 @@ exec { 'update':
   require => Exec['update'],
 }
 -> exec {'create_directory':
-  command => '/usr/bin/env mkdir -p /data/web_static/releases/test/ /data/web_static/shared/',
+  command => '/usr/bin mkdir -p /data/web_static/releases/test/ /data/web_static/shared/',
 }
 -> file { 'Hello World':
   ensure => 'present',
