@@ -23,8 +23,9 @@ exec { 'update':
 -> exec {'update_configuration':
   command => '/usr/bin/env sed -i "/listen 80 default_server/a location /hbnb_static/ { alias /data/web_static/current/;}" /etc/nginx/sites-available/default',
 }
--> exec {'i':
-  command => '/usr/bin/env service nginx restart',
+-> service { 'nginx':
+  ensure  => 'running',
+  require => Package['nginx'],
 }
 -> exec {'g':
   command => '/usr/bin/env chown -R ubuntu:ubuntu /data',
