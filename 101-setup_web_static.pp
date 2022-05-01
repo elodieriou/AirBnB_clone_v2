@@ -4,7 +4,7 @@ exec { 'apt-get-update':
   command => 'apt-get -y update',
   path    => '/usr/bin',
 }
--> exec {'apt-get -y install nginx':
+-> exec {'apt-get-install-nginx':
   command => 'apt-get -y install nginx',
   path    => '/usr/bin',
 }
