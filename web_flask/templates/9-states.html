@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>HBNB</title>
+    </head>
+    <body>
+        {% if states is mapping %}
+        <h1>State</h1>
+           <ul>
+            {% for state in states.values() | sort(attribute='name') %}
+            <li>{{ state.id }}: <b>{{ state.name }}</b></li>
+                <ul>
+                    {% for city in cities.values() | sort(attribute='name') %}
+                    {% if city.state_id == state.id %}
+                    <li>{{ city.id }}: <b>{{ city.name }}</b></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </ul>
+        {% elif states is defined %}
+        <h1>State: {{ states[0].name }}</h1>
+        <h3>Cities:</h3>
+        <ul>
+            {% for city in states[0].cities | sort(attribute='name') %}
+            <li>{{ city.id }}: <b>{{ city.name }}</b></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h1>Not found!</h1>
+        {% endif %}
+    </body>
+</html>
