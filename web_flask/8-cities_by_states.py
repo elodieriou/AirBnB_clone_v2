@@ -26,10 +26,10 @@ def tear_down(exception):
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
     """The method list all cities of a State"""
-    state = storage.all(State)
-    city = storage.all(City)
+    list_state = storage.all(State)
+    list_city = storage.all(City)
     return render_template('8-cities_by_states.html',
-                           states=state, cities=city)
+                           states=list_state, cities=list_city)
 
 
 if __name__ == "__main__":

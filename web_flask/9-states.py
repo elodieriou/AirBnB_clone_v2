@@ -9,13 +9,14 @@ app = Flask(__name__)
 
 @app.route('/states', strict_slashes=False)
 def states():
-    state = storage.all(State)
-    return render_template('9-states.html', states=state)
+    """The method lists all State"""
+    list_state = storage.all(State)
+    return render_template('9-states.html', states=list_state)
 
 
 @app.route('/states/<id>', strict_slashes=False)
 def states_id(id):
-    """The method lists all State and all cities by State"""
+    """The method lists all State and all cities for State thanks an id"""
     list_state = []
     my_dict_state = storage.all(State)
     for key, value in my_dict_state.items():
