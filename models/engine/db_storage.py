@@ -27,8 +27,9 @@ class DBStorage:
                                               getenv('HBNB_MYSQL_HOST'),
                                               getenv('HBNB_MYSQL_DB'),
                                               pool_pre_ping=True))
-    if getenv('HBNB_ENV') == 'test':
-        Base.metadata.drop_all(bind=self.__engine)
+
+        if getenv('HBNB_ENV') == 'test':
+            Base.metadata.drop_all(bind=self.__engine)
 
     def all(self, cls=None):
         """All method: display all information about a specific class"""
@@ -69,3 +70,7 @@ class DBStorage:
                                        expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
+
+    def close(self):
+        """Close method: close or remove the session"""
+        self.__session.close()

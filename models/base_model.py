@@ -27,6 +27,10 @@ class BaseModel:
         if len(args) == 0 and len(kwargs) != 0:
             if self.id not in kwargs:
                 self.id = str(uuid.uuid4())
+            if self.created_at not in kwargs:
+                self.created_at = datetime.now()
+            if self.updated_at not in kwargs:
+                self.updated_at = datetime.now()
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key == 'created_at' or key == 'updated_at':
