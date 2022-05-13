@@ -8,13 +8,12 @@ app = Flask(__name__)
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
-    """The method display an HTML page"""
+    """The method lists all State"""
     list_state = []
     my_dict = storage.all(State)
     for key, value in my_dict.items():
         list_state.append(my_dict[key])
-    list_sorted = sorted(list_state, key=lambda s: s.name)
-    return render_template('7-states_list.html', list_state=list_sorted)
+    return render_template('7-states_list.html', list_state=list_state)
 
 
 @app.teardown_appcontext
