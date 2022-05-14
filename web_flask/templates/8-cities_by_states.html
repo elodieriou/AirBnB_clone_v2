@@ -4,12 +4,12 @@
         <title>HBNB</title>
     </head>
     <body>
-        <h1>State</h1>
+        <h1>States</h1>
         <ul>
-            {% for state in states.values() | sort(attribute='name') %}
+            {% for state in list_states | sort(attribute='name') %}
             <li>{{ state.id }}: <b>{{ state.name }}</b></li>
                 <ul>
-                    {% for city in cities.values() | sort(attribute='name') %}
+                    {% for city in list_cities | sort(attribute='name') %}
                     {% if city.state_id == state.id %}
                     <li>{{ city.id }}: <b>{{ city.name }}</b></li>
                     {% endif %}
