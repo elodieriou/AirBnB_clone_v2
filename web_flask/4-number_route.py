@@ -21,7 +21,7 @@ def hbnb():
 def c_text(text):
     """The method displays 'C' following by text"""
     new_text = text.replace("_", " ")
-    return f"C {new_text}"
+    return "C {}".format(new_text)
 
 
 @app.route('/python', strict_slashes=False)
@@ -29,13 +29,13 @@ def c_text(text):
 def python_text(text="is cool"):
     """The method displays 'Python' following text"""
     new_text = text.replace("_", " ")
-    return f"Python {new_text}"
+    return "Python {}".format(new_text)
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def number_n(n):
     """The method displays 'n is a number' if n is an int"""
-    return f"{n} is a number"
+    return "{} is a number".format(n)
 
 
 if __name__ == "__main__":
