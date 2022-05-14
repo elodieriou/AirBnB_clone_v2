@@ -21,7 +21,7 @@ def hbnb():
 def c_text(text):
     """The method displays 'C' following by text"""
     new_text = text.replace("_", " ")
-    return f"C {new_text}"
+    return "C {}".format(new_text)
 
 
 @app.route('/python', strict_slashes=False)
