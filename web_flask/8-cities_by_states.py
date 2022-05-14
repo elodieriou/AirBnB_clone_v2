@@ -11,10 +11,8 @@ app = Flask(__name__)
 def cities_by_states():
     """The method list all cities of a State"""
     list_state = storage.all(State).values()
-    list_city = storage.all(City).values()
     return render_template('8-cities_by_states.html',
-                           list_states=list_state,
-                           list_cities=list_city)
+                           list_states=list_state)
 
 
 @app.teardown_appcontext
