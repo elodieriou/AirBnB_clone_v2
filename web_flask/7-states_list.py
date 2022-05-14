@@ -9,10 +9,7 @@ app = Flask(__name__)
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """The method lists all State"""
-    list_state = []
-    my_dict = storage.all(State)
-    for key, value in my_dict.items():
-        list_state.append(my_dict[key])
+    list_state = storage.all(State).values()
     return render_template('7-states_list.html', list_state=list_state)
 
 
