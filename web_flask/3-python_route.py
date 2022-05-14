@@ -29,7 +29,7 @@ def c_text(text):
 def python_text(text="is cool"):
     """The method displays 'Python' following text"""
     new_text = text.replace("_", " ")
-    return f"Python {new_text}"
+    return "Python {}".format(new_text)
 
 
 if __name__ == "__main__":
