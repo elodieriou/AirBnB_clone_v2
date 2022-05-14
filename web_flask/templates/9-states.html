@@ -5,10 +5,10 @@
     </head>
     <body>
         {% if states is defined %}
-        <h1>State: {{ states[0].name }}</h1>
+        <h1>State: {{ states.name }}</h1>
         <h3>Cities:</h3>
         <ul>
-            {% for city in states[0].cities | sort(attribute='name') %}
+            {% for city in states.cities | sort(attribute='name') %}
             <li>{{ city.id }}: <b>{{ city.name }}</b></li>
             {% endfor %}
         </ul>

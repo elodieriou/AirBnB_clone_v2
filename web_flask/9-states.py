@@ -17,13 +17,11 @@ def states():
 @app.route('/states/<id>', strict_slashes=False)
 def states_id(id):
     """The method lists all State and all cities for State thanks an id"""
-    list_state = []
-    my_dict_state = storage.all(State)
-    for key, value in my_dict_state.items():
-        if value.id == id:
-            list_state.append(my_dict_state[key])
-            break
-    return render_template('9-states.html', states=list_state)
+    list_state = storage.all(State).values()
+    for state in list_state:
+        if state.id == id:
+            return render_template('9-states.html', states=list_state)
+    return render_template('9-states.html')
 
 
 @app.teardown_appcontext
