@@ -4,7 +4,8 @@
         <title>HBNB</title>
     </head>
     <body>
-        {% if states is mapping %}
+
+        {% if id is defined %}
         <h1>State: {{ states.name }}</h1>
         <h3>Cities:</h3>
         <ul>
