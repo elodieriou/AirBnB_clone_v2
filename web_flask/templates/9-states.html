@@ -5,7 +5,9 @@
     </head>
     <body>
 
-        {% if id is defined %}
+        {% if no_id is defined %}
+        <h1>Not found!</h1>
+        {% else %}
         <h1>State: {{ states.name }}</h1>
         <h3>Cities:</h3>
         <ul>
@@ -13,8 +15,6 @@
             <li>{{ city.id }}: <b>{{ city.name }}</b></li>
             {% endfor %}
         </ul>
-        {% else %}
-        <h1>Not found!</h1>
         {% endif %}
     </body>
 </html>
