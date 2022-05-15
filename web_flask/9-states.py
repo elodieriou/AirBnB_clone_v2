@@ -3,6 +3,7 @@
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+from models.city import City
 app = Flask(__name__)
 
 
@@ -17,9 +18,10 @@ def states():
 def states_id(id):
     """The method lists all State and all cities for State thanks an id"""
     list_state = storage.all(State).values()
+
     for state in list_state:
         if state.id == id:
-            return render_template('9-states.html', states=list_state)
+            return render_template('9-states.html', states=state)
     return render_template('9-states.html', no_id=True)
 
 
