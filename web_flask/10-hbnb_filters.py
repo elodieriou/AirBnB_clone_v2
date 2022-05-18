@@ -20,16 +20,6 @@ def hbnb_filters():
                            list_amenity=list_amenity)
 
 
-@app.route('/states/<id>', strict_slashes=False)
-def states_id(id):
-    """The method lists all State and all cities for State thanks an id"""
-    list_state = storage.all(State).values()
-    for state in list_state:
-        if state.id == id:
-            return render_template('10-hbnb_filters.html', states=state, id=True)
-    return render_template('10-hbnb_filters.html')
-
-
 @app.teardown_appcontext
 def tear_down(exception):
     """The method remove the current SQLAlchemy Session"""
